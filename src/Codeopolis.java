@@ -3,13 +3,9 @@
 public class Codeopolis{
     public static void main (String[] args) {
         City city = new City ();
-        //TextInterface textInterface = new TextInterface (city);
-      //  textInterface.startGame ();
-        city.hungersnot ();
-        System.out.println("Bushels: " + city.getBushels());
-        System.out.println("Starved: " + city.getStarved());
-        System.out.println("Starved Percentage: " + city.getStarvedPercentage());
-
+        TextInterface textInterface = new TextInterface (city);
+        Game game = new Game (city, textInterface);
+        game.playGame ();
 
     }
 }
