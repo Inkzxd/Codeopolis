@@ -206,6 +206,7 @@ public class City {
             double result = (double) (this.residents * 20 - bushels) / 20;
             this.starved = (int) Math.ceil(result);
             this.starvedPercentage = this.starved * 100 / this.residents;
+            this.residents -= this.starved;
         }
     }
 
@@ -214,16 +215,15 @@ public class City {
         if (deathRate <= 0.4) {
             double growthRate = random.nextDouble() * 0.4;
             this.newResidents = (int) Math.floor(this.residents * growthRate);
-            this.residents = (int) Math.floor(this.residents * (1 + growthRate));//new
-            // population after run
+            //   this.residents = (int) Math.floor(this.residents * (1 + growthRate));
+            this.residents += this.newResidents;
         }
     }
 
     public void gesamternte() {
         double ernteFaktor = 6.0;
-        double z = 0.1 + Math.random() * 0.9; //
-        // Generiere eine Zufallszahl im Intervall [0.1,
-        // 1.0)
+        double z = 0.1 + Math.random() * 0.9;
+        // Generiere eine Zufallszahl im Intervall [0.1,1.0)
         double ernteRate = ernteFaktor * z;
         this.bushelsHarvested = (int) (this.bushels * ernteRate);
         this.bushels += (int) Math.floor(this.bushelsHarvested);
